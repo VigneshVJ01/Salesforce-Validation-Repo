@@ -1,154 +1,160 @@
-/* ================= GOOGLE FONT ================= */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
-/* ================= GLOBAL ================= */
 body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-    color: #ffffff;
-    margin: 0;
-    padding: 0;
-    text-align: center;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+  text-align: center;
 }
 
-/* ================= CONTAINER ================= */
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 30px 20px;
 }
 
-/* ================= HEADINGS ================= */
 h2 {
-    font-size: 28px;
-    font-weight: 600;
-    margin-bottom: 10px;
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 20px;
 }
 
 h3 {
-    font-size: 20px;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    color: #cfd8dc;
+  font-size: 18px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  color: #cfd8dc;
 }
 
-/* ================= BUTTON ================= */
+/* ================= LOGIN BOX ================= */
+.login-box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 420px;
+}
+
+.login-box input,
+.login-box select {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  outline: none;
+}
+
+.login-box input::placeholder {
+  color: #aaa;
+}
+
+.login-box select option {
+  background: #203a43;
+  color: #fff;
+}
+
+/* ================= BUTTONS ================= */
 button {
-    padding: 10px 22px;
-    font-size: 15px;
-    border: none;
-    border-radius: 20px;
-    background: linear-gradient(135deg, #ff7b00, #ffb347);
-    color: white;
-    cursor: pointer;
-    transition: 0.3s;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  padding: 10px 22px;
+  font-size: 15px;
+  border: none;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #ff7b00, #ffb347);
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  font-family: 'Poppins', sans-serif;
 }
 
 button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+}
+
+.logout-btn {
+  background: linear-gradient(135deg, #c0392b, #e74c3c);
 }
 
 /* ================= RULES CONTAINER ================= */
 #rulesContainer {
-    width: 60%;
-    max-width: 700px;
-    margin-top: 20px;
+  width: 60%;
+  max-width: 700px;
+  margin-top: 20px;
 }
 
 /* ================= RULE CARD ================= */
 .rule-card {
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(10px);
-    padding: 18px;
-    margin-bottom: 15px;
-    border-radius: 14px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    transition: 0.3s;
-    color: #ffffff;
-    text-align: left;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+  padding: 18px;
+  margin-bottom: 15px;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  transition: 0.3s;
+  text-align: left;
 }
 
 .rule-card:hover {
-    transform: translateY(-4px);
-    background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-4px);
+  background: rgba(255,255,255,0.15);
 }
 
-/* ================= HEADER ================= */
 .rule-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 .rule-header span {
-    font-size: 16px;
-    font-weight: 600;
-    color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
 }
 
-/* ================= RULE TEXT ================= */
 .rule-card p {
-    font-size: 14px;
-    color: #e0e0e0;
-    margin: 5px 0;
+  font-size: 14px;
+  color: #e0e0e0;
+  margin: 5px 0;
 }
 
 /* ================= TOGGLE SWITCH ================= */
 .switch {
-    position: relative;
-    display: inline-block;
-    width: 50px;
-    height: 26px;
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
 }
 
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
+.switch input { opacity: 0; width: 0; height: 0; }
 
-/* TRACK */
 .slider {
-    position: absolute;
-    cursor: pointer;
-    inset: 0;
-    background: #ff4d4d;
-    transition: 0.4s;
-    border-radius: 50px;
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background: #ff4d4d;
+  transition: 0.4s;
+  border-radius: 50px;
 }
 
-/* CIRCLE */
 .slider:before {
-    content: "";
-    position: absolute;
-    height: 20px;
-    width: 20px;
-    left: 3px;
-    bottom: 3px;
-    background: white;
-    transition: 0.4s;
-    border-radius: 50%;
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background: white;
+  transition: 0.4s;
+  border-radius: 50%;
 }
 
-/* ACTIVE (GREEN) */
-input:checked + .slider {
-    background: #00e676;
-}
-
-input:checked + .slider:before {
-    transform: translateX(24px);
-}
-
-/* ================= CALLBACK PAGE ================= */
-.callback-box {
-    margin-top: 120px;
-    padding: 25px;
-    background: rgba(255,255,255,0.1);
-    border-radius: 12px;
-    backdrop-filter: blur(10px);
-}
+input:checked + .slider { background: #00e676; }
+input:checked + .slider:before { transform: translateX(24px); }

@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Salesforce Validation Rules</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Salesforce Validation Rules</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="container">
 
-    <h2>Login to Salesforce</h2>
+  <h2>Salesforce Validation Rule Manager</h2>
 
-    <!-- Cross Org Inputs -->
-<input id="clientId" placeholder="Client ID">
-<input id="clientSecret" placeholder="Client Secret">
-<input id="loginUrl" placeholder="https://login.salesforce.com">
+  <div class="login-box">
+    <input id="clientId" type="text" placeholder="Consumer Key (Client ID)" />
+    <input id="clientSecret" type="password" placeholder="Consumer Secret (Client Secret)" />
+    <select id="loginUrl">
+      <option value="https://login.salesforce.com">Production / Developer Org</option>
+      <option value="https://test.salesforce.com">Sandbox</option>
+    </select>
+    <button onclick="login()">🔐 Login with Salesforce</button>
+    <button class="logout-btn" onclick="window.location.href='/logout'">🚪 Logout</button>
+  </div>
 
-<button onclick="login()">Login</button>
-
-    <h3>Validation Rules</h3>
-    <div id="rulesContainer">
-        <p>Login first to see validation rules.</p>
-    </div>
+  <h3>Validation Rules (Account Object)</h3>
+  <div id="rulesContainer">
+    <p>Login first to see validation rules.</p>
+  </div>
 
 </div>
 
