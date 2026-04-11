@@ -15,11 +15,19 @@ const REDIRECT_URI = "https://salesforce-validation-repo.onrender.com/auth/callb
 // ================= MIDDLEWARE =================
 app.use(express.json());
 
+// 🔥 IMPORTANT FIX FOR RENDER (SESSION)
+app.set("trust proxy", 1);
+
 app.use(
   session({
     secret: "salesforce_secret",
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
+    cookie: {
+      secure: true,      // required for HTTPS (Render)
+      httpOnly: true,
+      sameSite: "none",  // required for OAuth redirect
+    },
   })
 );
 
@@ -60,10 +68,15 @@ app.get("/auth/callback", async (req, res) => {
 
     const data = await tokenRes.json();
 
+    // 🔥 SAVE SESSION PROPERLY
     req.session.accessToken = data.access_token;
     req.session.instanceUrl = data.instance_url;
 
-    res.redirect("/");
+    // ensure session is saved before redirect
+    req.session.save(() => {
+      res.redirect("/");
+    });
+
   } catch (err) {
     console.error("OAuth Error:", err);
     res.status(500).send("Authentication failed");
@@ -176,8 +189,9 @@ app.post("/api/toggleRuleApex", async (req, res) => {
 
 // ================= LOGOUT =================
 app.get("/logout", (req, res) => {
-  req.session.destroy();
-  res.redirect("/");
+  req.session.destroy(() => {
+    res.redirect("/");
+  });
 });
 
 // ================= START =================
