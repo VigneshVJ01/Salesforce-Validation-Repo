@@ -60,28 +60,50 @@ button:hover {
 }
 
 /* ================= RULE CARD ================= */
-#rulesContainer {
-    width: 60%;
-    max-width: 700px;
-    margin-top: 20px;
+.rule-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    padding: 18px;
+    margin-bottom: 15px;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: 0.3s;
+    color: #ffffff;
+    text-align: left;
 }
 
-#rulesContainer div:hover {
+.rule-card:hover {
+    transform: translateY(-4px);
     background: rgba(255, 255, 255, 0.15);
 }
 
+/* ================= HEADER ================= */
+.rule-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.rule-header span {
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
 /* ================= RULE TEXT ================= */
-#rulesContainer strong {
+.rule-card p {
     font-size: 14px;
-    font-weight: 500;
+    color: #e0e0e0;
+    margin: 5px 0;
 }
 
 /* ================= TOGGLE SWITCH ================= */
 .switch {
     position: relative;
     display: inline-block;
-    width: 46px;   /* smaller */
-    height: 24px;  /* slimmer */
+    width: 50px;
+    height: 26px;
 }
 
 .switch input {
@@ -90,41 +112,36 @@ button:hover {
     height: 0;
 }
 
-/* SLIDER */
+/* TRACK */
 .slider {
     position: absolute;
     cursor: pointer;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-color: #ff4d4d;
-    transition: 0.3s;
-    border-radius: 34px;
+    inset: 0;
+    background: #ff4d4d;
+    transition: 0.4s;
+    border-radius: 50px;
 }
 
 /* CIRCLE */
 .slider:before {
-    position: absolute;
     content: "";
-    height: 18px;
-    width: 18px;
+    position: absolute;
+    height: 20px;
+    width: 20px;
     left: 3px;
     bottom: 3px;
-    background-color: white;
-    transition: 0.3s;
+    background: white;
+    transition: 0.4s;
     border-radius: 50%;
 }
 
-/* ACTIVE */
+/* ACTIVE (GREEN) */
 input:checked + .slider {
-    background-color: #00e676;
+    background: #00e676;
 }
 
 input:checked + .slider:before {
-    transform: translateX(22px);
-}
-
-/* REMOVE TEXT INSIDE TOGGLE (clean look) */
-.slider::after {
-    content: "";
+    transform: translateX(24px);
 }
 
 /* ================= CALLBACK PAGE ================= */
@@ -134,42 +151,4 @@ input:checked + .slider:before {
     background: rgba(255,255,255,0.1);
     border-radius: 12px;
     backdrop-filter: blur(10px);
-}
-
-/* Rule Card */
-.rule-card {
-    background: #ffffff;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    transition: 0.3s;
-}
-
-.rule-card:hover {
-    transform: translateY(-3px);
-}
-
-/* Header */
-.rule-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.rule-name {
-    font-size: 18px;
-    font-weight: 600;
-    color: #333;
-}
-
-/* Details */
-.rule-details {
-    margin-top: 10px;
-    font-size: 14px;
-    color: #555;
-}
-
-.rule-details p {
-    margin: 4px 0;
 }

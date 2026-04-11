@@ -38,7 +38,10 @@ function displayRules(rules) {
         <div class="rule-card">
             <div class="rule-header">
                 <span>${rule.name}</span>
-                <input type="checkbox" id="toggle-${rule.id}" ${rule.active ? "checked" : ""}>
+                <label class="switch">
+                    <input type="checkbox" id="toggle-${rule.id}" ${rule.active ? "checked" : ""}>
+                    <span class="slider"></span>
+                </label>
             </div>
             <p><b>Field:</b> ${rule.errorField}</p>
             <p><b>Message:</b> ${rule.errorMessage}</p>
