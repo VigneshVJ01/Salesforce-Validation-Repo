@@ -1,0 +1,175 @@
+/* ================= GOOGLE FONT ================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+/* ================= GLOBAL ================= */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* ================= CONTAINER ================= */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 30px 20px;
+}
+
+/* ================= HEADINGS ================= */
+h2 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+h3 {
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #cfd8dc;
+}
+
+/* ================= BUTTON ================= */
+button {
+    padding: 10px 22px;
+    font-size: 15px;
+    border: none;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #ff7b00, #ffb347);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+}
+
+/* ================= RULES CONTAINER ================= */
+#rulesContainer {
+    width: 60%;
+    max-width: 700px;
+    margin-top: 20px;
+}
+
+/* ================= RULE CARD ================= */
+#rulesContainer {
+    width: 60%;
+    max-width: 700px;
+    margin-top: 20px;
+}
+
+#rulesContainer div:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* ================= RULE TEXT ================= */
+#rulesContainer strong {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* ================= TOGGLE SWITCH ================= */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 46px;   /* smaller */
+    height: 24px;  /* slimmer */
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* SLIDER */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ff4d4d;
+    transition: 0.3s;
+    border-radius: 34px;
+}
+
+/* CIRCLE */
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.3s;
+    border-radius: 50%;
+}
+
+/* ACTIVE */
+input:checked + .slider {
+    background-color: #00e676;
+}
+
+input:checked + .slider:before {
+    transform: translateX(22px);
+}
+
+/* REMOVE TEXT INSIDE TOGGLE (clean look) */
+.slider::after {
+    content: "";
+}
+
+/* ================= CALLBACK PAGE ================= */
+.callback-box {
+    margin-top: 120px;
+    padding: 25px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+}
+
+/* Rule Card */
+.rule-card {
+    background: #ffffff;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.rule-card:hover {
+    transform: translateY(-3px);
+}
+
+/* Header */
+.rule-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rule-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Details */
+.rule-details {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+.rule-details p {
+    margin: 4px 0;
+}

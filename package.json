@@ -1,0 +1,14 @@
+{
+  "name": "salesforcevalidationapp",
+  "version": "1.0.0",
+  "description": "Salesforce Validation Rule Toggle App",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-session": "^1.19.0",
+    "node-fetch": "^2.6.7"
+  }
+}
