@@ -15,7 +15,7 @@ const REDIRECT_URI = "https://salesforce-validation-repo.onrender.com/auth/callb
 // ================= MIDDLEWARE =================
 app.use(express.json());
 
-// 🔥 IMPORTANT FIX FOR RENDER (SESSION)
+// 🔥 IMPORTANT FOR RENDER
 app.set("trust proxy", 1);
 
 app.use(
@@ -24,9 +24,9 @@ app.use(
     resave: false,
     saveUninitialized: false,
     cookie: {
-      secure: true,      // required for HTTPS (Render)
+      secure: false,     // IMPORTANT: false for Render (fixes 401)
       httpOnly: true,
-      sameSite: "none",  // required for OAuth redirect
+      sameSite: "lax",   // IMPORTANT: allows OAuth redirect
     },
   })
 );
@@ -68,12 +68,20 @@ app.get("/auth/callback", async (req, res) => {
 
     const data = await tokenRes.json();
 
-    // 🔥 SAVE SESSION PROPERLY
+    if (!data.access_token) {
+      console.log("TOKEN ERROR:", data);
+      return res.status(500).send("Token not received");
+    }
+
+    // ✅ SAVE SESSION
     req.session.accessToken = data.access_token;
     req.session.instanceUrl = data.instance_url;
 
-    // ensure session is saved before redirect
-    req.session.save(() => {
+    // ✅ FORCE SAVE BEFORE REDIRECT
+    req.session.save((err) => {
+      if (err) {
+        console.log("SESSION SAVE ERROR:", err);
+      }
       res.redirect("/");
     });
 
@@ -86,6 +94,8 @@ app.get("/auth/callback", async (req, res) => {
 // ================= FETCH RULES =================
 app.post("/api/validationRules", async (req, res) => {
   try {
+    console.log("SESSION:", req.session); // DEBUG
+
     const { instanceUrl, accessToken } = req.session;
 
     if (!accessToken) {
