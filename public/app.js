@@ -1,9 +1,10 @@
 // ================= LOGIN =================
 function login() {
-    const clientId = document.getElementById("clientId").value;
-    const loginUrl = document.getElementById("loginUrl").value;
+  const clientId = document.getElementById("clientId").value;
+  const clientSecret = document.getElementById("clientSecret").value;
+  const loginUrl = document.getElementById("loginUrl").value;
 
-    window.location.href = `/auth/login?clientId=${clientId}&loginUrl=${loginUrl}`;
+  window.location.href = `/auth/login?clientId=${clientId}&clientSecret=${clientSecret}&loginUrl=${loginUrl}`;
 }
 
 // ================= FETCH RULES =================

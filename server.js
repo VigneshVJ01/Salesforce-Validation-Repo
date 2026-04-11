@@ -30,15 +30,11 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // ================= LOGIN =================
 app.get("/auth/login", (req, res) => {
-  const loginUrl = req.query.loginUrl || "https://login.salesforce.com";
-  const clientId = req.query.clientId;
+  const { clientId, clientSecret, loginUrl } = req.query;
 
-  if (!clientId) {
-    return res.send("Client ID is required");
-  }
-
-  req.session.loginUrl = loginUrl;
   req.session.clientId = clientId;
+  req.session.clientSecret = clientSecret;
+  req.session.loginUrl = loginUrl;
 
   const authUrl = `${loginUrl}/services/oauth2/authorize?response_type=code&client_id=${clientId}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}`;
 
@@ -52,19 +48,19 @@ app.get("/auth/callback", async (req, res) => {
   const clientId = req.session.clientId;
 
   try {
-    const tokenRes = await fetch(`${loginUrl}/services/oauth2/token`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: new URLSearchParams({
-        grant_type: "authorization_code",
-        client_id: clientId,
-        client_secret: CLIENT_SECRET,
-        redirect_uri: REDIRECT_URI,
-        code,
-      }),
-    });
+const tokenRes = await fetch(`${loginUrl}/services/oauth2/token`, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/x-www-form-urlencoded",
+  },
+  body: new URLSearchParams({
+    grant_type: "authorization_code",
+    client_id: req.session.clientId,
+    client_secret: req.session.clientSecret,
+    redirect_uri: REDIRECT_URI,
+    code,
+  }),
+});
 
     const data = await tokenRes.json();
 
