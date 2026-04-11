@@ -1,7 +1,10 @@
 // ================= LOGIN =================
-document.getElementById("loginBtn").addEventListener("click", () => {
-    window.location.href = "/auth/login";
-});
+function login() {
+    const clientId = document.getElementById("clientId").value;
+    const loginUrl = document.getElementById("loginUrl").value;
+
+    window.location.href = `/auth/login?clientId=${clientId}&loginUrl=${loginUrl}`;
+}
 
 // ================= FETCH RULES =================
 function fetchValidationRules() {
@@ -67,13 +70,8 @@ function toggleRule(ruleId, newState) {
         },
         body: JSON.stringify({ ruleId, newState })
     })
-    .then(res => res.text())
-    .then(() => {
-        alert("✅ Rule updated!");
-    })
-    .catch(() => {
-        alert("❌ Failed to update");
-    });
+    .then(() => alert("✅ Rule updated!"))
+    .catch(() => alert("❌ Failed to update"));
 }
 
 // ================= AUTO LOAD =================

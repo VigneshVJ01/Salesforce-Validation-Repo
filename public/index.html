@@ -3,14 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Salesforce Validation Rules</title>
-    <link rel="stylesheet" href="style.css?v=2">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="container">
 
-    <h2 id="headingText">Login to Salesforce</h2>
-    <button id="loginBtn">Login</button>
+    <h2>Login to Salesforce</h2>
+
+    <!-- Cross Org Inputs -->
+    <input id="clientId" placeholder="Enter Client ID" />
+    <input id="loginUrl" placeholder="https://login.salesforce.com" />
+
+    <button onclick="login()">Login</button>
 
     <h3>Validation Rules</h3>
     <div id="rulesContainer">
